@@ -4,14 +4,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.amazonaws.mobile.client.*;
 import com.amazonaws.mobile.auth.ui.SignInUI;
-import com.amazonaws.mobile.auth.core.IdentityHandler;
 import com.amazonaws.mobile.auth.core.IdentityManager;
 import com.amazonaws.mobile.auth.core.SignInStateChangeListener;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 
 /**
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity{
+
+    DynamoDBMapper dynamoDBMapper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,13 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
+        // Instantiate a AmazonDynamoDBMapperClient
+        AmazonDynamoDBClient dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
+        this.dynamoDBMapper = DynamoDBMapper.builder()
+                .dynamoDBClient(dynamoDBClient)
+                .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
+                .build();
+
         showSignIn();
     }
 
@@ -45,7 +55,7 @@ public class LoginActivity extends AppCompatActivity{
         //Log.d(LOG_TAG, "showSignIn");
 
         SignInUI signin = (SignInUI) AWSMobileClient.getInstance().getClient(LoginActivity.this, SignInUI.class);
-        signin.login(LoginActivity.this, BaseActivity.class).execute();
+        signin.login(LoginActivity.this, RegisterActivity.class).execute();
     }
 }
 

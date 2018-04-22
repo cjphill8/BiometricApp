@@ -31,6 +31,9 @@ dependencies {
     // Sign in UI Library
     implementation 'com.android.support:appcompat-v7:26.+'
 
+    //Database
+    implementation 'com.amazonaws:aws-android-sdk-ddb-mapper:2.6.+'
+
     implementation('com.amazonaws:aws-android-sdk-auth-ui:2.6.+@aar') { transitive = true }
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'

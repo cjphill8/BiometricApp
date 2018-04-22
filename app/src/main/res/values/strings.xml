@@ -6,9 +6,12 @@
     <string name="prompt_user">Username</string>
     <string name="prompt_password">Password</string>
     <string name="confirm_password">Confirm Password</string>
-    <string name="prompt_height">Height (in)</string>
-    <string name="prompt_weight">Weight (lbs)</string>
-    <string name="prompt_age">Age</string>
+    <string name="prompt_first">First Name:</string>
+    <string name="prompt_last">Last Name:</string>
+    <string name="prompt_height">Height:</string>
+    <string name="prompt_weight">Weight:</string>
+    <string name="prompt_age">Age:</string>
+    <string name="prompt_gender">Gender:</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>
     <string name="action_submit">Submit</string>
